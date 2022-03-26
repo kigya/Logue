@@ -1,4 +1,4 @@
-package com.kigya.logue
+package com.kigya.logue.model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
