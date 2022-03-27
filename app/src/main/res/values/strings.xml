@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Logue</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_username">John Doe</string>
+    <string name="settings_default_status">online</string>
+    <string name="account_info">Account</string>
+    <string name="settings_default_number">+375331234567</string>
+    <string name="phone_number">Phone number</string>
+    <string name="username">Username</string>
+    <string name="bio_settings">Bio</string>
+    <string name="write_about_yourself">Write about yourself</string>
 </resources>
