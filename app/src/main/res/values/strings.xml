@@ -10,4 +10,8 @@
     <string name="username">Username</string>
     <string name="bio_settings">Bio</string>
     <string name="write_about_yourself">Write about yourself</string>
+    <string name="change_name">Change name</string>
+    <string name="exit">Exit</string>
+    <string name="clear_chat">Clear chat</string>
+    <string name="delete_chat">Delete chat</string>
 </resources>

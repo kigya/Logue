@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/dodger_blue</item>
         <item name="colorPrimaryDark">@color/cyan_blue</item>
         <item name="colorAccent">@color/alice_blue</item>
+        <item name="popupTheme">@style/actionMenu</item>
         <item name="android:colorBackground">@color/alice_blue</item>
 
         <!-- MaterialDrawer specific values -->
@@ -20,7 +21,7 @@
         </item> <!-- Defines the color if legacy style (Material 1, is enabled) -->
         <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
         <item name="material_drawer_header_selection_text">
-            @color/material_drawer_header_selection_text
+                @color/material_drawer_header_selection_text
         </item>
         <item name="material_drawer_header_selection_subtext">
             @color/material_drawer_dark_header_selection_subtext
