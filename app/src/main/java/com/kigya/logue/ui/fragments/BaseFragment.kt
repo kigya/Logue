@@ -24,6 +24,5 @@ open class BaseFragment(private var layout: Int) : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
     }
 }

@@ -14,4 +14,11 @@
     <string name="exit">Exit</string>
     <string name="clear_chat">Clear chat</string>
     <string name="delete_chat">Delete chat</string>
+    <string name="register_phone_hint">-------------</string>
+    <string name="button_next">button next</string>
+    <string name="enter_a_code">Enter a code</string>
+    <string name="check_a_verification_code_in_your_phone">Check a verification code in your phone</string>
+    <string name="register_hint_default_code">- - - - - -</string>
+    <string name="register_title_your_phone">Your phone</string>
+    <string name="enter_phone_number">Enter phone number</string>
 </resources>

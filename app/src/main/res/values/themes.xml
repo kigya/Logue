@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/dodger_blue</item>
         <item name="colorPrimaryDark">@color/cyan_blue</item>
         <item name="colorAccent">@color/alice_blue</item>
+        <item name="android:colorAccent">@color/alice_blue</item>
         <item name="popupTheme">@style/actionMenu</item>
         <item name="android:colorBackground">@color/alice_blue</item>
 
@@ -73,7 +74,7 @@
     <style name="mainToolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@color/cyan_blue</item>
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
     </style>
 
