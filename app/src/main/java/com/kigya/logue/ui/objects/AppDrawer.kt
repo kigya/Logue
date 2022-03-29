@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import com.kigya.logue.R
 import com.kigya.logue.ui.fragments.SettingsFragment
+import com.kigya.logue.utils.replaceFragment
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
@@ -86,11 +87,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolba
                         drawerItem: IDrawerItem<*>
                     ): Boolean {
                         when (position) {
-                            7 -> mainActivity.supportFragmentManager
-                                .beginTransaction()
-                                .addToBackStack(null)
-                                .replace(R.id.data_container, SettingsFragment())
-                                .commit()
+                            7 -> mainActivity.replaceFragment(SettingsFragment())
                         }
                         return false
                     }

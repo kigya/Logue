@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.kigya.logue.R
 import com.kigya.logue.databinding.ActivityRegisterBinding
 import com.kigya.logue.ui.fragments.EnterPhoneFragment
+import com.kigya.logue.utils.replaceFragment
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -22,6 +23,6 @@ class RegisterActivity : AppCompatActivity() {
         mToolbar = mBinding.registerToolbar
         setSupportActionBar(mToolbar)
         title = getString(R.string.register_title_your_phone)
-        supportFragmentManager.beginTransaction().add(R.id.register_data_container, EnterPhoneFragment()).commit()
+        replaceFragment(EnterPhoneFragment(), false)
     }
 }

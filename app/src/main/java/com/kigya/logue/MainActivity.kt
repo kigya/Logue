@@ -1,15 +1,18 @@
 package com.kigya.logue
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.google.firebase.auth.FirebaseAuth
 import com.kigya.logue.activities.RegisterActivity
 import com.kigya.logue.databinding.ActivityMainBinding
 import com.kigya.logue.model.MainViewModel
 import com.kigya.logue.ui.fragments.ChatsFragment
 import com.kigya.logue.ui.objects.AppDrawer
+import com.kigya.logue.utils.AUTH
+import com.kigya.logue.utils.replaceActivity
+import com.kigya.logue.utils.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,16 +40,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFunctionality() {
-        if (false) {
+        if (AUTH.currentUser != null) {
             setSupportActionBar(mToolbar)
             mAppDrawer.create()
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.data_container, ChatsFragment())
-                .commit()
+            replaceFragment(ChatsFragment(), false)
         } else {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            replaceActivity(RegisterActivity())
         }
 
     }
@@ -54,5 +53,6 @@ class MainActivity : AppCompatActivity() {
     private fun initFields() {
         mToolbar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolbar)
+        AUTH = FirebaseAuth.getInstance()
     }
 }

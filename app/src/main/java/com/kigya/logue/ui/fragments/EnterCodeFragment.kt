@@ -1,17 +1,21 @@
 package com.kigya.logue.ui.fragments
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import com.google.firebase.auth.PhoneAuthProvider
+import com.kigya.logue.MainActivity
 import com.kigya.logue.R
+import com.kigya.logue.activities.RegisterActivity
 import com.kigya.logue.databinding.FragmentEnterCodeBinding
+import com.kigya.logue.utils.AUTH
+import com.kigya.logue.utils.AppTextWatcher
+import com.kigya.logue.utils.replaceActivity
+import com.kigya.logue.utils.showToast
 
 
-class EnterCodeFragment : BaseFragment(R.layout.fragment_enter_code) {
+class EnterCodeFragment(private val phoneNumber: String, val id: String) : BaseFragment(R.layout.fragment_enter_code) {
 
     private var _binding: FragmentEnterCodeBinding? = null
     private val binding get() = _binding!!
@@ -27,27 +31,26 @@ class EnterCodeFragment : BaseFragment(R.layout.fragment_enter_code) {
 
     override fun onStart() {
         super.onStart()
-        binding.registerInputCode.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
+        (activity as RegisterActivity).title = phoneNumber
+        binding.registerInputCode.addTextChangedListener(AppTextWatcher {
+            val string = binding.registerInputCode.text.toString()
+            if (string.length == 6) {
+                enterCode()
             }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                val string = binding.registerInputCode.text.toString()
-                if (string.length == 6) {
-                    verifyCode()
-                }
-            }
-
         })
     }
 
-    fun verifyCode() {
-        Toast.makeText(activity, "Ok", Toast.LENGTH_SHORT).show()
+    private fun enterCode() {
+        val code = binding.registerInputCode.text.toString()
+        val credential = PhoneAuthProvider.getCredential(id, code)
+        AUTH.signInWithCredential(credential).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                showToast("Welcome")
+                (activity as RegisterActivity).replaceActivity(MainActivity())
+            } else {
+                showToast(task.exception?.message.toString())
+            }
+        }
     }
 
     override fun onDestroyView() {

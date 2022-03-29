@@ -8,6 +8,7 @@
         <item name="android:colorAccent">@color/alice_blue</item>
         <item name="popupTheme">@style/actionMenu</item>
         <item name="android:colorBackground">@color/alice_blue</item>
+        <item name="colorControlActivated">@color/cyan_blue</item>
 
         <!-- MaterialDrawer specific values -->
         <item name="material_drawer_background">@color/material_drawer_background</item>
