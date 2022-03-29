@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.kigya.logue.R
 import com.kigya.logue.databinding.ActivityRegisterBinding
 import com.kigya.logue.ui.fragments.EnterPhoneFragment
+import com.kigya.logue.utils.initFirebase
 import com.kigya.logue.utils.replaceFragment
 
 class RegisterActivity : AppCompatActivity() {
@@ -16,6 +17,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+        initFirebase()
     }
 
     override fun onStart() {

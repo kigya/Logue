@@ -9,13 +9,12 @@ import com.kigya.logue.MainActivity
 import com.kigya.logue.R
 import com.kigya.logue.activities.RegisterActivity
 import com.kigya.logue.databinding.FragmentEnterCodeBinding
-import com.kigya.logue.utils.AUTH
-import com.kigya.logue.utils.AppTextWatcher
-import com.kigya.logue.utils.replaceActivity
-import com.kigya.logue.utils.showToast
+import com.kigya.logue.utils.*
+import java.util.*
 
 
-class EnterCodeFragment(private val phoneNumber: String, val id: String) : BaseFragment(R.layout.fragment_enter_code) {
+class EnterCodeFragment(private val phoneNumber: String, val id: String) :
+    BaseFragment(R.layout.fragment_enter_code) {
 
     private var _binding: FragmentEnterCodeBinding? = null
     private val binding get() = _binding!!
@@ -45,8 +44,21 @@ class EnterCodeFragment(private val phoneNumber: String, val id: String) : BaseF
         val credential = PhoneAuthProvider.getCredential(id, code)
         AUTH.signInWithCredential(credential).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                showToast("Welcome")
-                (activity as RegisterActivity).replaceActivity(MainActivity())
+                val uid = AUTH.currentUser?.uid.toString()
+                val dateMap = mutableMapOf<String, Any>()
+                dateMap[CHILD_ID] = uid
+                dateMap[CHILD_PHONE] = phoneNumber
+                dateMap[CHILD_USERNAME] = uid
+                REF_DATABASE_ROOT.child(NODE_USERS).child(uid).updateChildren(dateMap)
+                    .addOnCompleteListener { secondTask ->
+                        if (secondTask.isSuccessful) {
+                            showToast("Welcome")
+                            (activity as RegisterActivity).replaceActivity(MainActivity())
+                        } else {
+                            showToast(secondTask.exception?.message.toString())
+                        }
+                    }
+
             } else {
                 showToast(task.exception?.message.toString())
             }

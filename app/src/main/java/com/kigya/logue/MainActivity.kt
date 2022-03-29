@@ -11,6 +11,7 @@ import com.kigya.logue.model.MainViewModel
 import com.kigya.logue.ui.fragments.ChatsFragment
 import com.kigya.logue.ui.objects.AppDrawer
 import com.kigya.logue.utils.AUTH
+import com.kigya.logue.utils.initFirebase
 import com.kigya.logue.utils.replaceActivity
 import com.kigya.logue.utils.replaceFragment
 
@@ -53,6 +54,6 @@ class MainActivity : AppCompatActivity() {
     private fun initFields() {
         mToolbar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolbar)
-        AUTH = FirebaseAuth.getInstance()
+        initFirebase()
     }
 }
