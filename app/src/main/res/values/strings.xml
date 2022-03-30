@@ -21,4 +21,8 @@
     <string name="register_hint_default_code">- - - - - -</string>
     <string name="register_title_your_phone">Your phone</string>
     <string name="enter_phone_number">Enter phone number</string>
+    <string name="settings_hint_input_name">Name</string>
+    <string name="settings_hint_input_surname">Surname</string>
+    <string name="settings_toast_name_is_empty">Name cannot be empty!</string>
+    <string name="toast_data_updated">Data updated</string>
 </resources>

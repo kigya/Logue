@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.kigya.logue.activities.RegisterActivity
 import com.kigya.logue.databinding.ActivityMainBinding
-import com.kigya.logue.model.MainViewModel
+import com.kigya.logue.models.MainViewModel
 import com.kigya.logue.ui.fragments.ChatsFragment
 import com.kigya.logue.ui.objects.AppDrawer
 import com.kigya.logue.utils.AUTH
