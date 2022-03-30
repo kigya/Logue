@@ -10,7 +10,6 @@ import com.kigya.logue.R
 import com.kigya.logue.activities.RegisterActivity
 import com.kigya.logue.databinding.FragmentEnterCodeBinding
 import com.kigya.logue.utils.*
-import java.util.*
 
 
 class EnterCodeFragment(private val phoneNumber: String, val id: String) :

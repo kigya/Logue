@@ -1,10 +1,9 @@
 package com.kigya.logue
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.google.firebase.auth.FirebaseAuth
 import com.kigya.logue.activities.RegisterActivity
 import com.kigya.logue.databinding.ActivityMainBinding
 import com.kigya.logue.model.MainViewModel
@@ -19,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mToolbar: androidx.appcompat.widget.Toolbar
-    private lateinit var mAppDrawer: AppDrawer
+    lateinit var mAppDrawer: AppDrawer
 
     private val viewModel: MainViewModel by viewModels()
 
