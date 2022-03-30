@@ -27,6 +27,11 @@ class ChangeNameFragment : Fragment(R.layout.fragment_change_name) {
     override fun onResume() {
         super.onResume()
         setHasOptionsMenu(true)
+        val fullnameList = USER.fullname.split("_")
+        binding.settingsInputName.setText(fullnameList[0])
+        if (fullnameList.size == 2) {
+            binding.settingsInputSurname.setText(fullnameList[1])
+        }
     }
 
     override fun onDestroyView() {
@@ -53,7 +58,7 @@ class ChangeNameFragment : Fragment(R.layout.fragment_change_name) {
         if (name.isEmpty()) {
             showToast(getString(R.string.settings_toast_name_is_empty))
         } else {
-            val fullName= "$name $surname".trim()
+            val fullName = name.trim() + "_" + surname.trim()
             REF_DATABASE_ROOT.child(NODE_USERS).child(UID).child(CHILD_FULLNAME)
                 .setValue(fullName).addOnCompleteListener {
                     if (it.isSuccessful) {
