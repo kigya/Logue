@@ -25,4 +25,7 @@
     <string name="settings_hint_input_surname">Surname</string>
     <string name="settings_toast_name_is_empty">Name cannot be empty!</string>
     <string name="toast_data_updated">Data updated</string>
+    <string name="settings_input_username">Input username</string>
+    <string name="user_already_exist">User already exist</string>
+    <string name="field_is_empty">Field is empty</string>
 </resources>
