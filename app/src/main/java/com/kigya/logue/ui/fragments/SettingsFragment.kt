@@ -39,6 +39,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
     private fun initFields() {
         binding.settingsBio.text = USER.bio
         binding.settingsFullName.text = USER.fullname
+            .replace("_", " ")
         binding.settingsPhoneNumber.text = USER.phone
         binding.settingsUsername.text = USER.username
         binding.settingsBtnChangeUsername.setOnClickListener {
