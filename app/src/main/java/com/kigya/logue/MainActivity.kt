@@ -4,16 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContract
+
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.canhub.cropper.CropImage
-import com.canhub.cropper.CropImageView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.kigya.logue.activities.RegisterActivity
 import com.kigya.logue.databinding.ActivityMainBinding
 import com.kigya.logue.models.MainViewModel

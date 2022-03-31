@@ -2,9 +2,6 @@ package com.kigya.logue.ui.fragments
 
 import android.os.Bundle
 import android.view.*
-import com.canhub.cropper.CropImage
-import com.canhub.cropper.CropImageActivity
-import com.canhub.cropper.CropImageContract
 import com.kigya.logue.MainActivity
 import com.kigya.logue.R
 import com.kigya.logue.activities.RegisterActivity
@@ -13,6 +10,7 @@ import com.kigya.logue.utils.AUTH
 import com.kigya.logue.utils.USER
 import com.kigya.logue.utils.replaceActivity
 import com.kigya.logue.utils.replaceFragment
+import com.theartofdev.edmodo.cropper.CropImage
 
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
@@ -55,7 +53,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
     }
 
     private fun changeUserPhoto() {
-        CropImage.
+        CropImage.activity()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
