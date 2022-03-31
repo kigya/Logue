@@ -1,16 +1,15 @@
 package com.kigya.logue.ui.fragments
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import com.kigya.logue.MainActivity
 import com.kigya.logue.R
 import com.kigya.logue.activities.RegisterActivity
 import com.kigya.logue.databinding.FragmentSettingsBinding
-import com.kigya.logue.utils.AUTH
-import com.kigya.logue.utils.USER
-import com.kigya.logue.utils.replaceActivity
-import com.kigya.logue.utils.replaceFragment
+import com.kigya.logue.utils.*
 import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImageView
 
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
@@ -54,6 +53,10 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     private fun changeUserPhoto() {
         CropImage.activity()
+            .setAspectRatio(1, 1)
+            .setRequestedSize(600, 600)
+            .setCropShape(CropImageView.CropShape.OVAL)
+            .start(APP_ACTIVITY)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -64,7 +67,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         when (item.itemId) {
             R.id.settings_menu_exit -> {
                 AUTH.signOut()
-                (activity as MainActivity).replaceActivity(RegisterActivity())
+                APP_ACTIVITY.replaceActivity(RegisterActivity())
             }
             R.id.settings_menu_change_name -> replaceFragment(ChangeNameFragment())
         }

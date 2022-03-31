@@ -1,12 +1,11 @@
 package com.kigya.logue.ui.fragments
 
 import android.os.Bundle
-import android.view.*
-import androidx.fragment.app.Fragment
-import com.kigya.logue.MainActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.kigya.logue.R
 import com.kigya.logue.databinding.FragmentChangeNameBinding
-import com.kigya.logue.databinding.FragmentEnterPhoneBinding
 import com.kigya.logue.utils.*
 
 
@@ -50,7 +49,7 @@ class ChangeNameFragment : BaseChangeFragment(R.layout.fragment_change_name) {
             showToast(getString(R.string.settings_toast_name_is_empty))
         } else {
             val fullName = name.trim() + "_" + surname.trim()
-            REF_DATABASE_ROOT.child(NODE_USERS).child(UID).child(CHILD_FULLNAME)
+            REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_FULLNAME)
                 .setValue(fullName).addOnCompleteListener {
                     if (it.isSuccessful) {
                         showToast(getString(R.string.toast_data_updated))
