@@ -21,4 +21,5 @@ open class BaseFragment(layout: Int) : Fragment(layout) {
             (activity as MainActivity).mAppDrawer.enableDrawer()
         }
     }
+
 }

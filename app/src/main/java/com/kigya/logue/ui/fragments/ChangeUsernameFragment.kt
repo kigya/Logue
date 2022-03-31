@@ -7,7 +7,7 @@ import com.kigya.logue.R
 import com.kigya.logue.databinding.FragmentChangeUsernameBinding
 import com.kigya.logue.utils.*
 
-class ChangeUsernameFragment : BaseFragment(R.layout.fragment_change_username) {
+class ChangeUsernameFragment : BaseChangeFragment(R.layout.fragment_change_username) {
 
     private var _binding: FragmentChangeUsernameBinding? = null
     private val binding get() = _binding!!
@@ -26,23 +26,10 @@ class ChangeUsernameFragment : BaseFragment(R.layout.fragment_change_username) {
 
     override fun onResume() {
         super.onResume()
-        setHasOptionsMenu(true)
         binding.settingsInputUsername.setText(USER.username)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        (activity as MainActivity).menuInflater.inflate(R.menu.settings_menu_confirm, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.settings_confirm_change -> change()
-        }
-        return true
-    }
-
-    private fun change() {
+    override fun change() {
         mNewUsername = binding.settingsInputUsername.text.toString().lowercase()
         if (mNewUsername.isEmpty()) {
             showToast(getString(R.string.field_is_empty))
@@ -73,7 +60,7 @@ class ChangeUsernameFragment : BaseFragment(R.layout.fragment_change_username) {
     }
 
     private fun changeUsername() {
-        REF_DATABASE_ROOT.child(NODE_USERNAMES).child(mNewUsername).setValue(USER.username)
+        REF_DATABASE_ROOT.child(NODE_USERNAMES).child(mNewUsername).setValue(UID)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     updateCurrentUsername()

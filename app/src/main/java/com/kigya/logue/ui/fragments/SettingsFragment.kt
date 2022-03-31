@@ -2,10 +2,12 @@ package com.kigya.logue.ui.fragments
 
 import android.os.Bundle
 import android.view.*
+import com.canhub.cropper.CropImage
+import com.canhub.cropper.CropImageActivity
+import com.canhub.cropper.CropImageContract
 import com.kigya.logue.MainActivity
 import com.kigya.logue.R
 import com.kigya.logue.activities.RegisterActivity
-import com.kigya.logue.databinding.FragmentEnterPhoneBinding
 import com.kigya.logue.databinding.FragmentSettingsBinding
 import com.kigya.logue.utils.AUTH
 import com.kigya.logue.utils.USER
@@ -16,7 +18,6 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,6 +46,16 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         binding.settingsBtnChangeUsername.setOnClickListener {
             replaceFragment(ChangeUsernameFragment())
         }
+        binding.settingsBtnChangeBio.setOnClickListener {
+            replaceFragment(ChangeBioFragment())
+        }
+        binding.settingsChangePhoto.setOnClickListener {
+            changeUserPhoto()
+        }
+    }
+
+    private fun changeUserPhoto() {
+        CropImage.
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
