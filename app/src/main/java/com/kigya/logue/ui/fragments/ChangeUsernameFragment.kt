@@ -37,7 +37,6 @@ class ChangeUsernameFragment : BaseChangeFragment(R.layout.fragment_change_usern
                 .addListenerForSingleValueEvent(AppValueEventListener {
                     if (it.hasChild(mNewUsername)) {
                         showToast(getString(R.string.user_already_exist))
-                        deleteOldUsername()
                     } else {
                         changeUsername()
                     }
@@ -73,6 +72,7 @@ class ChangeUsernameFragment : BaseChangeFragment(R.layout.fragment_change_usern
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     showToast(getString(R.string.toast_data_updated))
+                    deleteOldUsername()
                 } else {
                     showToast(it.exception?.message.toString())
                 }

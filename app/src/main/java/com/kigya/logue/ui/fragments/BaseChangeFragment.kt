@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.kigya.logue.MainActivity
 import com.kigya.logue.R
 import com.kigya.logue.utils.APP_ACTIVITY
+import com.kigya.logue.utils.hideKeyboard
 
 open class BaseChangeFragment(layout: Int) : Fragment(layout) {
 
@@ -16,12 +17,9 @@ open class BaseChangeFragment(layout: Int) : Fragment(layout) {
         if (activity is MainActivity) {
             APP_ACTIVITY.mAppDrawer.disableDrawer()
         }
+        hideKeyboard()
     }
 
-    override fun onStop() {
-        super.onStop()
-        APP_ACTIVITY.hideKeyboard()
-    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
