@@ -2,11 +2,13 @@ package com.kigya.logue
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.kigya.logue.activities.RegisterActivity
 import com.kigya.logue.databinding.ActivityMainBinding
@@ -37,8 +39,15 @@ class MainActivity : AppCompatActivity() {
         APP_ACTIVITY = this
         initFirebase()
         initUser {
+            initContacts()
             initFields();
             initFunctionality();
+        }
+    }
+
+    private fun initContacts() {
+        if (checkPermission(READ_CONTACTS)) {
+            showToast("Scanning contacts")
         }
     }
 
@@ -66,6 +75,17 @@ class MainActivity : AppCompatActivity() {
     private fun initFields() {
         mToolbar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolbar)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (ContextCompat.checkSelfPermission(APP_ACTIVITY, READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
+            initContacts()
+        }
     }
 
 }
